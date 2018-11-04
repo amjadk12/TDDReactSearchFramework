@@ -42,4 +42,21 @@ describe("SearchBooks", () => {
     mockFn();
     expect(mockFn).toHaveBeenCalled();
   });
+  it("should check the state of preSearchText", () => {
+    wrapper
+      .find("input.searchtext")
+      .simulate("change", { target: { name: "search", value: "jungle" } });
+    wrapper.find("button").simulate("click");
+    expect(wrapper.state("prevSearchText")).toEqual("jungle");
+  });
+  it("should check searching for the same text as previous", () => {
+    wrapper
+      .find("input.searchtext")
+      .simulate("change", { target: { name: "search", value: "jungle" } });
+    wrapper.find("button").simulate("click");
+    wrapper.find("button").simulate("click");
+    expect(wrapper.state("prevSearchText")).toEqual(
+      wrapper.state("searchText")
+    );
+  });
 });

@@ -12,19 +12,18 @@ class SearchBooks extends Component {
     //console.log(e.target.value.trim());
     this.setState({ searchText: e.target.value.trim() });
   };
+  // Avoid un-neccesary calls - Already searched or Blank search
   handleClick = () => {
-    //console.log("clicked the button");
-    console.log(this.state.searchText.toLocaleLowerCase());
-    console.log(this.state.prevSearchText.toLocaleLowerCase());
     if (
-      this.state.prevSearchText.toLocaleLowerCase() !==
+      (this.state.prevSearchText.toLocaleLowerCase() !==
         this.state.searchText.toLocaleLowerCase() ||
-      this.state.prevSearchText === ""
+        this.state.prevSearchText === "") &&
+      this.state.searchText !== ""
     ) {
       this.setState({ prevSearchText: this.state.searchText });
-      alert(this.state.searchText);
     } else {
-      alert("already searched");
+      //this.setState({ searchText: e.target.value.trim() });
+      //alert("already searched or blank search");
     }
   };
   render() {
