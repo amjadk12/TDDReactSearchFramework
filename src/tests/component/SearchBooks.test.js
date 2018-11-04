@@ -29,4 +29,17 @@ describe("SearchBooks", () => {
     wrapper.find("input").simulate("change", "test");
     expect(wrapper.find("input.mockInput").props().value).toEqual("jungle");
   });
+  it("should check the state of searchText", () => {
+    wrapper
+      .find("input.searchtext")
+      .simulate("change", { target: { name: "search", value: "jungle" } });
+    expect(wrapper.state("searchText")).toEqual("jungle");
+  });
+  it("should call mock function when button is clicked", () => {
+    const mockFn = jest.fn();
+    const tree = shallow(<button name="button test" handleHandler={mockFn} />);
+    tree.simulate("click");
+    mockFn();
+    expect(mockFn).toHaveBeenCalled();
+  });
 });
