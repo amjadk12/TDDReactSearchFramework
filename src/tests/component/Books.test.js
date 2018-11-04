@@ -15,4 +15,7 @@ describe("Books", () => {
   it("should render <h1>", () => {
     expect(wrapper.find("h1").length).toEqual(1);
   });
+  it("should render <h2>", () => {
+    expect(wrapper.find("h2").length).toEqual(1);
+  });
 });
