@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { GetBooksBySearch } from "../service/GetBooksByText";
 
 class SearchBooks extends Component {
   state = {
@@ -21,6 +22,7 @@ class SearchBooks extends Component {
       this.state.searchText !== ""
     ) {
       this.setState({ prevSearchText: this.state.searchText });
+      GetBooksBySearch(this.state.searchText.trim());
     } else {
       //this.setState({ searchText: e.target.value.trim() });
       //alert("already searched or blank search");
