@@ -5,13 +5,14 @@ class SearchBooks extends Component {
   render() {
     return (
       <div>
-        Search:
+        <h1>Search</h1>
         <input
           type="text"
           name="query"
           className="form-control my-3"
           placeholder="Search..."
         />
+        <button id="search" />
       </div>
     );
   }

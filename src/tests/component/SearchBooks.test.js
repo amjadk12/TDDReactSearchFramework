@@ -15,4 +15,7 @@ describe("SearchBooks", () => {
   it("should render a <input />", () => {
     expect(wrapper.find("input").length).toEqual(1);
   });
+  it("should render a <button />", () => {
+    expect(wrapper.find("button").length).toEqual(1);
+  });
 });
