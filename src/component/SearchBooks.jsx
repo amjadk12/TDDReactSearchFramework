@@ -14,7 +14,7 @@ class SearchBooks extends Component {
     this.setState({ searchText: e.target.value.trim() });
   };
   // Avoid un-neccesary calls - Already searched or Blank search
-  handleClick = () => {
+  handleClick = async () => {
     if (
       (this.state.prevSearchText.toLocaleLowerCase() !==
         this.state.searchText.toLocaleLowerCase() ||
@@ -22,7 +22,8 @@ class SearchBooks extends Component {
       this.state.searchText !== ""
     ) {
       this.setState({ prevSearchText: this.state.searchText });
-      GetBooksBySearch(this.state.searchText.trim());
+      const searchResult = await GetBooksBySearch(this.state.searchText.trim());
+      console.log(searchResult);
     } else {
       //this.setState({ searchText: e.target.value.trim() });
       //alert("already searched or blank search");
