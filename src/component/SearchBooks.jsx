@@ -6,11 +6,11 @@ class SearchBooks extends Component {
     searchText: "",
     prevSearchText: "",
     error: "",
-    fetchingData: false
+    fetchingData: false,
+    resultBooks: null
   };
 
   onTextChange = e => {
-    //console.log(e.target.value.trim());
     this.setState({ searchText: e.target.value.trim() });
   };
   // Avoid un-neccesary calls - Already searched or Blank search
@@ -23,7 +23,10 @@ class SearchBooks extends Component {
     ) {
       this.setState({ prevSearchText: this.state.searchText });
       const searchResult = await GetBooksBySearch(this.state.searchText.trim());
-      console.log(searchResult);
+      this.setState({
+        resultBooks: searchResult
+      });
+      console.log(this.state.resultBooks);
     } else {
       //this.setState({ searchText: e.target.value.trim() });
       //alert("already searched or blank search");
